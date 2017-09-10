@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			div#main_modal{
+				position: absolute;
+				display: none;
+				top:15%;
+				left:35%;
+				width: 600px;
+				height: 450px;
+				border-style: solid;
+				border-color: #1AAD19;
+				background-color:#eeeeee;
+				border-radius: 20px;
+				box-shadow: 10px 10px 5px #888888;
+				z-index: 2;
+			}
+			div#leftt{
+                float: left;
+                margin: 10px;
+                padding: 10px;
+				width: 100px;
+				height: 300px;
+				border-right: solid 1px;
+			}
+			div#leftt a{
+				display: block;
+				margin: 10px;
+			}
+			div#modal_head{
+				margin-bottom: 10px;
+				margin-top: 8px;
+				margin-left: 5px;
+				width: 500px;
+				height: 50px;
+				cursor:hand;
+			}
+			img#close{
+				position: absolute;
+				top: 10px;
+				right: 10px;
+			}
+			img#close:hover{
+				content: url('img/close.png');
+			}
+			a#modal{
+				width: 80px;
+				font-family: sans-serif;
+				white-space: nowrap;
+			}
+            div#maint{
+				margin: 10px;
+			}
+			a:hover{
+				color:#1AAD19;
+			}
+			div#bmaint{
+				text-align: center;
+			}
+			div#bmaint p3{
+				display: block;
+				margin: 10px;
+			}
+			.noselect {
+				-webkit-touch-callout: none; /* iOS Safari */
+				-webkit-user-select: none; /* Chrome/Safari/Opera */
+				-khtml-user-select: none; /* Konqueror */
+				-moz-user-select: none; /* Firefox */
+				-ms-user-select: none; /* Internet Explorer/Edge */
+				user-select: none; /* Non-prefixed version, currently
+				not supported by any browser */
+			}
+		</style>
+	</head>
+	<body id="modal">
+		<div id="main_modal">
+			<div id="modal_head">
+				<p3 class="noselect"><b>设置</b></p3>
+				<img class="noselect" id="close" src="img/close1.png" onclick="closeModal()" />
+			</div>
+			<div id="leftt">
+				<a id="modal" class="noselect" style="color:#1AAD19">账号设置</a>
+				<a id="modal" class="noselect">通用设置</a>
+				<a id="modal" class="noselect">快捷按键</a>
+				<a id="modal" class="noselect">关于微信</a>
+			</div>
+			<div id="maint" align="center">
+				<img src="img/duzhong.jpg" class="noselect" height="150px" width="150px" />
+			</div>
+			<div id="bmaint">
+				<p3><b>度中</b><br/></p3>
+				<p3><b>微信号：dudroid</b><br/></p3>
+				<button><b>退出登录</b></button>
+			</div>
+		</div>
+	</body>
+</html>
+
+
+
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>MyWork</title>
+		<script src= "js/jquery-3.2.1.min.js"></script>
+		<script src="js/Meal.js"></script>
+		<style type="text/css">
+			div#topOrButtom{
+				width: 100%;
+				height: 10%;
+				padding: 10px;
+				background-color: black;
+				color: white;
+				text-align: center;
+				clear: both;
+			}
+			div#left{
+				width: 90px;
+				height: 610px;
+				padding: 10px;
+				background-color: #eeeeee;
+				float: left;
+				margin-right: 10px;
+				clear: both;
+			}
+			div#main{
+				padding: 10px;
+			}
+			div.menu{
+				float: left;
+				width: 400px;
+				padding: 10px;
+			}
+			div.menu img{
+				border-color: #ABCDEF;
+				border-style: solid;
+				float: left;
+				height: 130px;
+				width: 130px;
+			}
+			div#curtain{
+				background-color: gray;
+				position: absolute;
+				display: none;
+				opacity: 0.8;
+				z-index: 1;
+				width: 100%;
+				height: 100%;
+			}
+		</style>
+	</head>
+	<body id="main_body">
+		<div id="curtain"></div>
+		<div class="contain">
+			<div id=topOrButtom>大佬洋点餐牌</div>
+			<div id=left>
+				<button class="tool" onclick="addItem()" style="text-align:center;width:70px;margin:10px">Add</button>
+				<button class="tool" onclick="printToConsole()"style="text-align:center;width:70px;margin:10px">Print</button>
+				<button class="tool" style="text-align:center;width:70px;margin:10px" onclick="showDialog()">Open</button>
+			</div>
+			<div id=main>
+				<div class="menu">
+					<img src="img/dantan.jpg" alt="Name"/>
+					<h4 id="mealname" class="meal">菜名：<font id="name">蛋挞</font></h3>
+					<h4 id="mealprice" class="meal">价格：<font id="price">$10</font> <br/></h3>
+					<button class="delete">Delete</button>
+					<button class="edit">Edit</button>
+				</div>
+				<div class="menu">
+					<img src="img/yrc.jpg" alt="Name"/>
+					<h4 id="mealname" class="meal">菜名：<font id="name">羊肉串</font></h3>
+					<h4 id="mealprice" class="meal">价格：<font id="price">$100</font> <br/></h3>
+					<button class="delete">Delete</button>
+					<button class="edit">Edit</button>
+				</div>
+			</div>
+			<div id=topOrButtom>大佬洋私房菜有限公司</div>
+		</div>
+	</body>
+</html>
+

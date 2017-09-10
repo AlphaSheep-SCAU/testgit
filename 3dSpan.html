@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <title>3d旋转!</title>
+        <style>
+            body{
+                background-color: black;
+                overflow: hidden;
+            }
+            div#perspective{
+                perspective: 2000px;/*景深*/
+            }
+            div#wrap{
+                width: 178px;
+                height: 100px;
+                position: relative;
+                margin: 320px auto;
+                transform-style: preserve-3d;
+                transform: rotateX(0deg) rotateY(0deg); 
+            }
+            div#wrap img{
+                position: absolute;
+                width: 178px;
+                height: 100px;
+                transform: rotateY(0deg);
+            }
+        </style>
+        <script src="js/jquery-3.2.1.min.js"></script>
+    </head>
+
+    <body>
+        <div><button onclick="turnLeft()">left</button> <button onclick="turnRight()">right</button></div>
+        <div id="perspective">
+            <div id="wrap">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background1.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background2.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background3.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background4.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background5.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background6.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background7.jpg">
+                <img oncontextmenu="return false;" onselectstart="return false;" src="img/background/background8.jpg">
+            </div>
+        </div>
+        <script>
+            // var nowX,nowY,lastX,lastY,minsX,minY,roX=-20,roY=0;
+            var curRotate = 0;
+            var count = 0;
+            var leftCnt;
+            var rightCnt;
+            var oWrap = document.getElementById("wrap");
+            window.onload = function(){
+                var oImg = document.getElementsByTagName("img");
+                var deg = 360/8;
+                Array.prototype.forEach.call(oImg,function(el,index){
+                    el.style.transform = "rotateY("+index*deg+"deg) translateZ(350px)";
+                });
+            }
+            function turnLeft(){
+                // var curRotate = oWrap.style.rotate;
+                // console.log(curRotate);
+                var newRotate = curRotate + (360/8/10);
+                curRotate = newRotate;
+                oWrap.style.transform = `rotateY(${newRotate}deg)`;
+                count++;
+                leftCnt = setTimeout('turnLeft()',50);
+                if(count == 10){
+                    clearTimeout(leftCnt);
+                    count = 0;
+                }
+            }
+            function turnRight(){
+                // var curRotate = oWrap.style.rotate;
+                // console.log(curRotate);
+                var newRotate = curRotate - (360/8/10);
+                curRotate = newRotate;
+                oWrap.style.transform = `rotateY(${newRotate}deg)`;
+                count++;
+                rightCnt = setTimeout('turnRight()',50);
+                if(count == 10){
+                    clearTimeout(rightCnt);
+                    count = 0;
+                }
+            }
+        </script>
+    </body>
+</html>

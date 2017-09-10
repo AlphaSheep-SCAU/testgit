@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <title>AlphaSheep</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="shortcut icon" href="img/me/Me.jpg" type="image/x-icon" />
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/bootstrap.js"></script>
+        <script src="js/backgroundAnimation.js"></script>
+        <script src="js/dateAndTime.js"></script>
+        <script src="js/buttonEvent.js"></script>
+        <!-- <script src="js/fallingNumber.js"></script> -->
+        <script type="text/javascript">
+            function onLoadFunc(){
+                beginShowPic();
+                setCanvas();
+                showTime();
+                showDate();
+            }
+        </script>
+        <style>
+            body{
+                background-color: black;
+                overflow-x:hidden;
+                overflow-y:hidden;
+            }
+            canvas{
+                display: none;
+                position: absolute;
+                z-index: -2;
+            }
+            div#background img{
+                height: 100%;
+                width: 100%;
+                position: absolute;
+                z-index: -2;
+                /* left:13%; */
+                display: none;
+            }
+            div#curtain{
+                position: absolute;
+                z-index: -1;
+                top:15%;
+                left: 25%;
+                width:50%;
+                height: 70%;
+                background-color: gray;
+                opacity: 0.5;
+                display: none;
+                border-radius: 25px;
+            }
+            div.middle{
+                position: absolute;
+                z-index: 0;
+                top:15%;
+                left: 25%;
+                width:50%;
+                height: 70%;
+                text-align: center;
+                display: none;
+            }
+            div.middle img{
+                float: left;
+                /* margin: 29px; */
+                height: 45%;
+                width: 30%;
+                margin-left: 36%;   
+                margin-right: 33%; 
+                margin-top: 2%;
+                margin-bottom: 2%;
+            }
+            div.link{
+                float: left;
+                margin: 5% 10%;
+                background-color: white;
+                text-align: center;
+                height: 134px;
+                width: 100px;
+            }
+            div#middle2 button{
+                width: 100px;
+                border-radius: 0px;
+            }
+            div#middle2 img{
+                height:90px;
+                width:90px;
+                margin:5px
+            }
+            div#middle2 img:hover{
+                cursor: pointer;
+                opacity: 0.5;
+            }
+            h1,h3{
+                color: wheat;
+            }
+        </style>
+    </head>
+    <body onload="onLoadFunc()">
+        <div id="background">
+            <img class="background_img" id="bg" style="display:none"/>
+            <!-- <img class="background_img" id="bg2" src="img/background/background2.jpg" />    -->
+        </div>
+        <canvas id="canvas"></canvas>
+         <!-- <div class="top-fix-container">sssssss</div>  -->
+        <button id="btnExpand" type="button" class="close" aria-label="Close" onclick="openDIV()" style="margin-top:1%;margin-right:2%;color:wheat;display:none">
+                <span aria-hidden="true">◣</span>
+        </button>
+        <button id="btnChange" type="button" class="close" aria-label="Close" onclick="tranWhich()" style="margin-top:1%;margin-right:2%;color:wheat">
+                <span aria-hidden="true">卍</span>
+        </button>
+        <button id="stopShowBG" type="button" class="close" aria-label="Close" onclick="stopShowPic()" style="margin-top:1%;margin-right:2%;color:wheat">
+                <span aria-hidden="true">‖</span>
+        </button>
+        <button id="startShowBG" type="button" class="close" aria-label="Close" onclick="startShowPic()" style="margin-top:1%;margin-right:2%;color:wheat;display:none">
+                <span aria-hidden="true">▶</span>
+        </button>
+        <div id="curtain"></div>
+        <div id="middle1" class="middle">
+            <button type="button" class="close" aria-label="Close" onclick="closeDIV()" style="margin-top:1%;margin-right:2%;color:wheat">
+                <span aria-hidden="true">◥</span>
+            </button>
+            <img src="img/me/Me.jpg" title="Me" alt="Me" class="img-circle"/>
+            <h1>Hi!大佬洋!</h1>
+            <h1 id="showTime"></h1>
+            <h3 id="showDate"></h3>
+            <button type="button" class="btn btn-success" onclick="showFavorite()">收藏夹</button>
+              
+        </div>
+        <div id="middle2" class="middle">
+            <h1>收藏夹</h1>
+            <div id="back" class="link">
+                <img src="img/favorite/back.png" onclick="backToMainPage()">
+                <button type="button" class="btn btn-primary" onclick="backToMainPage()">返回</button>
+            </div>
+            <div id="link1" class="link">
+                <img src="img/favorite/baidu.png" onclick="openBAIDU()">
+                <button type="button" class="btn btn-primary" onclick="openBAIDU()">百度</button>
+            </div>
+            <div id="link2" class="link">
+                <img src="img/favorite/google.png" onclick="openGOOGLE()">
+                <button type="button" class="btn btn-primary" onclick="openGOOGLE()">Google</button>
+            </div>
+            <div id="link3" class="link">
+                <img src="img/favorite/github.png" onclick="openGITHUB()">
+                <button type="button" class="btn btn-primary" onclick="openGITHUB()">My Github</button>
+            </div>
+            <div id="link4" class="link">
+                <img src="img/favorite/huya.png" onclick="openHUYA()">
+                <button type="button" class="btn btn-primary" onclick="openHUYA()">虎牙直播</button>
+            </div>
+            <div id="link5" class="link">
+                <img src="img/favorite/qqzone.png" onclick="openQQZONE()">
+                <button type="button" class="btn btn-primary" onclick="openQQZONE()">QQ空间</button>
+            </div>
+        </div>
+    </body>
+</html>
