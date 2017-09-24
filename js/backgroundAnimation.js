@@ -57,41 +57,87 @@ function startShowPic(){
 
 function beginShowPic(){
     var a = document.getElementById("bg");
-    var i = (Math.floor((Math.random()*10))%8)+1;
-    a.setAttribute("src","img/background/background"+i+".jpg");
-    $(a).fadeIn(1000);
-    var c = document.getElementById("curtain");
-    $(c).fadeIn(1000);
-    var d = document.getElementById("middle1");
-    $(d).fadeIn(1500);
-    imgIndex=i;
-    var b = setTimeout("changeImg()",10000);
+    // var i = (Math.floor((Math.random()*10))%8)+1;\
+    var i = Math.floor(Math.random() * 1085 );
+    // a.setAttribute("src","img/background/background"+i+".jpg");
+    $.ajax({
+        url:"https://unsplash.it/1920/1080/?image=" + i,
+        method:"GET",
+        success:function(){
+            a.setAttribute("src","https://unsplash.it/1920/1080/?image=" + i);
+            $(a).fadeIn(3000);
+            var c = document.getElementById("curtain");
+            $(c).fadeIn(1000);
+            var d = document.getElementById("middle1");
+            $(d).fadeIn(1500);
+            setTimeout("changeImg()",10000);
+        },
+        error: function(){
+            beginShowPic();
+        }
+    });
+    // a.setAttribute("src","https://unsplash.it/1920/1080/?image=" + i);
+    // $(a).fadeIn(3000);
+    // var c = document.getElementById("curtain");
+    // $(c).fadeIn(1000);
+    // var d = document.getElementById("middle1");
+    // $(d).fadeIn(1500);
+    // imgIndex=i;
+    // var b = setTimeout("changeImg()",10000);
 }
-
-function changeImg(){
-    // console.log("change");
-    if(tran == 1){
-        var frontBG = document.getElementById("bg");
-        $(frontBG).fadeOut(1000);
-        var f = setTimeout("imgRandom()",1000);
-    }
-    var d = setTimeout("changeImg()",10000);
-}
-
-function imgRandom(){
-    // console.log("random");
-    var frontBG = document.getElementById("bg");
-    while(true){
-        var i = (Math.floor((Math.random()*10))%8)+1;
-        // console.log(i+" "+imgIndex);
-        if(i != imgIndex){
-            imgIndex=i;
-            break;
+    function changeImg(){
+        if(tran === 1){
+            var bg = document.getElementById("bg");
+            var i = Math.floor(Math.random() * 1085 );
+            $.ajax({
+                url:"https://unsplash.it/1920/1080/?image=" + i,
+                method:"GET",
+                success: function(){
+                    // $(bg).fadeOut(2000);
+                    $(bg).hide();
+                    bg.setAttribute("src","https://unsplash.it/1920/1080/?image=" + i);
+                    $(bg).fadeIn(2000);
+                    setTimeout("changeImg()",10000);
+                },
+                error: function(){
+                    if(XMLHttpRequest.readyStatus === 404){
+                        changeImg();
+                    }
+                }
+            });
+        }else{
+            setTimeout("changeImg()",10000);
         }
     }
-    frontBG.setAttribute("src","img/background/background"+i+".jpg")
-    $(frontBG).fadeIn(1000);
-}
+// function changeImg(){
+//     // console.log("change");
+//     if(tran == 1){
+//         var frontBG = document.getElementById("bg");
+//         $(frontBG).fadeOut(4000);
+//         var f = setTimeout("imgRandom()",3000);
+//     }
+//     var d = setTimeout("changeImg()",10000);
+// }
+
+// function imgRandom(){
+//     // console.log("random");
+//     var frontBG = document.getElementById("bg");
+//     var i = Math.floor(Math.random() * 1084 );
+//     $.ajax({
+//         url:"https://unsplash.it/1920/1080/?image=" + i,
+//         method:"GET",
+//         success: function(){
+//             frontBG.setAttribute("src","https://unsplash.it/1920/1080/?image=" + i);
+//             $(frontBG).fadeIn(2000);
+//         },
+//         error: function(){
+//             imgRandom();
+//         }
+//     });
+//     // frontBG.setAttribute("src","img/background/background"+i+".jpg")
+//     frontBG.setAttribute("src","https://unsplash.it/1920/1080/?image=" + i);
+//     $(frontBG).fadeIn(2000);
+// }
 
 function setCanvas(){
     if(tran == 0){

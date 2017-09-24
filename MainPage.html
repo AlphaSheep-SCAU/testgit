@@ -4,6 +4,7 @@
         <title>AlphaSheep</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> 
         <link rel="stylesheet" href="css/bootstrap.min.css">
+        <link rel="stylesheet" href="css/MainPage.css">
         <link rel="shortcut icon" href="img/me/Me.jpg" type="image/x-icon" />
         <script src="js/jquery-3.2.1.min.js"></script>
         <script src="js/bootstrap.js"></script>
@@ -19,87 +20,11 @@
                 showDate();
             }
         </script>
-        <style>
-            body{
-                background-color: black;
-                overflow-x:hidden;
-                overflow-y:hidden;
-            }
-            canvas{
-                display: none;
-                position: absolute;
-                z-index: -2;
-            }
-            div#background img{
-                height: 100%;
-                width: 100%;
-                position: absolute;
-                z-index: -2;
-                /* left:13%; */
-                display: none;
-            }
-            div#curtain{
-                position: absolute;
-                z-index: -1;
-                top:15%;
-                left: 25%;
-                width:50%;
-                height: 70%;
-                background-color: gray;
-                opacity: 0.5;
-                display: none;
-                border-radius: 25px;
-            }
-            div.middle{
-                position: absolute;
-                z-index: 0;
-                top:15%;
-                left: 25%;
-                width:50%;
-                height: 70%;
-                text-align: center;
-                display: none;
-            }
-            div.middle img{
-                float: left;
-                /* margin: 29px; */
-                height: 45%;
-                width: 30%;
-                margin-left: 36%;   
-                margin-right: 33%; 
-                margin-top: 2%;
-                margin-bottom: 2%;
-            }
-            div.link{
-                float: left;
-                margin: 5% 10%;
-                background-color: white;
-                text-align: center;
-                height: 134px;
-                width: 100px;
-            }
-            div#middle2 button{
-                width: 100px;
-                border-radius: 0px;
-            }
-            div#middle2 img{
-                height:90px;
-                width:90px;
-                margin:5px
-            }
-            div#middle2 img:hover{
-                cursor: pointer;
-                opacity: 0.5;
-            }
-            h1,h3{
-                color: wheat;
-            }
-        </style>
     </head>
     <body onload="onLoadFunc()">
         <div id="background">
             <img class="background_img" id="bg" style="display:none"/>
-            <!-- <img class="background_img" id="bg2" src="img/background/background2.jpg" />    -->
+            <img class="background_img" id="bg2" src="img/background/background2.jpg" />   
         </div>
         <canvas id="canvas"></canvas>
          <!-- <div class="top-fix-container">sssssss</div>  -->
